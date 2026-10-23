@@ -25,7 +25,7 @@ class Nowplayingbar < Formula
   end
 
   test do
-    assert_predicate prefix/"NowPlayingBar.app/Contents/MacOS/NowPlayingBar", :exist?
+    assert_path_exists prefix/"NowPlayingBar.app/Contents/MacOS/NowPlayingBar"
     system "codesign", "--verify", "--deep", prefix/"NowPlayingBar.app"
   end
 end
