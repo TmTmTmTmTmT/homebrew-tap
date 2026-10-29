@@ -20,8 +20,11 @@ class Storagelens < Formula
         cp -R #{opt_prefix}/StorageLens.app /Applications/
       Scanning protected folders needs Full Disk Access. Allow it in
       System Settings > Privacy & Security > Full Disk Access.
-      If the app was built with an ad-hoc signature, you have to allow it
-      again after every update.
+      Homebrew builds in a sandbox without keychain access, so the app is
+      ad-hoc signed. If you have an Apple Development certificate, re-sign it
+      after every install or upgrade so Full Disk Access stays granted:
+        codesign --force --options runtime --sign "Apple Development" #{opt_prefix}/StorageLens.app
+      Without re-signing, allow Full Disk Access again after each upgrade.
     EOS
   end
 
